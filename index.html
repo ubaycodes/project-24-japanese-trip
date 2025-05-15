@@ -184,16 +184,55 @@
           </div>
         </div>
       </div>
+      <div class="container mx-auto px-4 py-8">
+        <!-- Responsive image + text component -->
+        <div
+          class="flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-12 items-center"
+        >
+          <!-- Image on left (switches to top on mobile) -->
+          <div class="w-full md:w-[45%] lg:w-[38%] md:ml-8">
+            <img
+              src="/public/img-4.jpg"
+              alt="Sample image"
+              class="w-full h-auto rounded-lg shadow-md object-cover justify-center"
+            />
+          </div>
+
+          <!-- Text content on right (switches to bottom on mobile) -->
+          <div class="w-full md:w-[55%] lg:w-[62%] text-justify">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+              Explore with us and show me
+              <span class="text-blue-700">your world</span>
+              exotis japanese
+            </h2>
+            <p class="text-gray-600 mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+            </p>
+            <p class="text-gray-600 mb-4">
+              Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+              cupidatat non proident.
+            </p>
+            <button
+              class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition duration-200"
+            >
+              Learn More
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- section 2 tampilan pricing -->
     <section class="w-full max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
-          Produk Terbaik Kami
+          Find the <span class="text-blue-700">destination</span> you want
         </h2>
         <p class="mt-4 text-lg text-gray-600">
-          Temukan koleksi lengkap produk kami
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
       </div>
 
@@ -201,12 +240,12 @@
         x-data="{
             currentIndex: 0,
             cards: [
-                { id: 1, title: 'Produk Premium', desc: 'Kualitas terbaik dengan bahan pilihan', price: 'Rp 299.000' },
-                { id: 2, title: 'Produk Standar', desc: 'Solusi ekonomis dengan kualitas baik', price: 'Rp 199.000' },
-                { id: 3, title: 'Bundle Hemat', desc: 'Paket lengkap dengan harga spesial', price: 'Rp 499.000' },
-                { id: 4, title: 'Limited Edition', desc: 'Edisi khusus dengan fitur eksklusif', price: 'Rp 399.000' },
-                { id: 5, title: 'New Arrival', desc: 'Produk terbaru dengan inovasi terkini', price: 'Rp 349.000' },
-                { id: 6, title: 'Best Seller', desc: 'Paling laris dan banyak diminati', price: 'Rp 249.000' }
+                { id: 1, title: 'Produk Premium', desc: 'Kualitas terbaik dengan bahan pilihan', price: 'Rp 299.000', image: '/public/img-5.jpg' },
+                { id: 2, title: 'Produk Standar', desc: 'Solusi ekonomis dengan kualitas baik', price: 'Rp 199.000', image: '/public/img-6.jpg' },
+                { id: 3, title: 'Bundle Hemat', desc: 'Paket lengkap dengan harga spesial', price: 'Rp 499.000', image: '/public/img-7.jpg' },
+                { id: 4, title: 'Limited Edition', desc: 'Edisi khusus dengan fitur eksklusif', price: 'Rp 399.000', image: '/public/img-8.jpg' },
+                { id: 5, title: 'New Arrival', desc: 'Produk terbaru dengan inovasi terkini', price: 'Rp 349.000', image: '/public/img-9.jpg' },
+                { id: 6, title: 'Best Seller', desc: 'Paling laris dan banyak diminati', price: 'Rp 249.000', image: '/public/img-10.jpg' }
             ],
             cardWidth: 80,
             isDragging: false,
@@ -306,13 +345,23 @@
                 <div
                   class="bg-white rounded-xl shadow-md overflow-hidden h-full flex flex-col"
                 >
-                  <div
-                    class="h-48 bg-gradient-to-r from-blue-50 to-purple-50 flex items-center justify-center"
-                  >
-                    <span
-                      class="text-gray-500 text-lg"
-                      x-text="'Gambar ' + card.title"
-                    ></span>
+                  <div class="h-48 bg-gray-100 overflow-hidden">
+                    <img
+                      :src="card.image"
+                      :alt="card.title"
+                      class="w-full h-full object-cover"
+                      x-show="card.image"
+                    />
+                    <!-- Fallback jika gambar tidak ada -->
+                    <div
+                      class="w-full h-full bg-gradient-to-r from-blue-50 to-purple-50 flex items-center justify-center"
+                      x-show="!card.image"
+                    >
+                      <span
+                        class="text-gray-500 text-lg"
+                        x-text="'Gambar ' + card.title"
+                      ></span>
+                    </div>
                   </div>
                   <div class="p-6 flex-grow">
                     <h3
