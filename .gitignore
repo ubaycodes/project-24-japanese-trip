@@ -23,4 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 # Ignore specific HTML file
-test.html
+notepad.html

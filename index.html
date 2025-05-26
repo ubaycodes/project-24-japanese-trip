@@ -240,12 +240,18 @@
         x-data="{
             currentIndex: 0,
             cards: [
-                { id: 1, title: 'Produk Premium', desc: 'Kualitas terbaik dengan bahan pilihan', price: 'Rp 299.000', image: '/public/img-5.jpg' },
-                { id: 2, title: 'Produk Standar', desc: 'Solusi ekonomis dengan kualitas baik', price: 'Rp 199.000', image: '/public/img-6.jpg' },
-                { id: 3, title: 'Bundle Hemat', desc: 'Paket lengkap dengan harga spesial', price: 'Rp 499.000', image: '/public/img-7.jpg' },
-                { id: 4, title: 'Limited Edition', desc: 'Edisi khusus dengan fitur eksklusif', price: 'Rp 399.000', image: '/public/img-8.jpg' },
-                { id: 5, title: 'New Arrival', desc: 'Produk terbaru dengan inovasi terkini', price: 'Rp 349.000', image: '/public/img-9.jpg' },
-                { id: 6, title: 'Best Seller', desc: 'Paling laris dan banyak diminati', price: 'Rp 249.000', image: '/public/img-10.jpg' }
+                { id: 1, title: 'Hiroshima', desc: 'City of Peace', location: '📍 Honshu Island (From 円 35 / person)', 
+                rating: '⭐⭐⭐⭐☆ (4.2)', image: '/public/img-5.jpg' },
+                { id: 2, title: 'Osaka', desc: 'Culinary & commercial city', location: '📍 Kansai Region (From 円 35 / person)', 
+                rating: '⭐⭐⭐⭐⭐ (4.8)', image: '/public/img-6.jpg' },
+                { id: 3, title: 'Tokyo', desc: 'Capital of Japan', location: '📍 Kanto Region (From 円 35 / person)', 
+                rating: '⭐⭐⭐⭐⭐ (5.0)',  image: '/public/img-7.jpg' },
+                { id: 4, title: 'Sapporo', desc: ' Largest city in Hokkaido', location: '📍 Hokkaido Island (From 円 35 / person)', 
+                rating: '⭐⭐⭐⭐☆ (4.5)', image: '/public/img-8.jpg' },
+                { id: 5, title: 'Nara', desc: 'Ancient city', location: '📍 Kansai Region (From 円 35 / person)', 
+                rating: '⭐⭐⭐⭐☆ (4.3)',  image: '/public/img-9.jpg' },
+                { id: 6, title: 'Kyoto', desc: 'Historic city', location: '📍 Kansai Region (From 円 35 / person)', 
+                rating: '⭐⭐⭐⭐⭐ (4.9)', image: '/public/img-10.jpg' }
             ],
             cardWidth: 80,
             isDragging: false,
@@ -372,15 +378,19 @@
                   </div>
                   <div class="px-6 pb-6 pt-2 border-t border-gray-100">
                     <div class="flex justify-between items-center">
-                      <span
-                        class="text-lg font-bold text-blue-600"
-                        x-text="card.price"
-                      ></span>
-                      <button
+                      <div class="flex flex-col">
+                        <!-- Added flex container for vertical stacking -->
+                        <span
+                          class="text-lg font-bold text-blue-600"
+                          x-text="card.location"
+                        ></span>
+                        <p class="text-sm text-black" x-text="card.rating"></p>
+                      </div>
+                      <!-- <button
                         class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                       >
                         Beli Sekarang
-                      </button>
+                      </button> -->
                     </div>
                   </div>
                 </div>
@@ -394,11 +404,11 @@
           <button
             @click="prev"
             :disabled="currentIndex === 0"
-            class="p-3 rounded-full bg-white shadow-md hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+            class="group p-3 rounded-full bg-white shadow-md hover:bg-blue-800 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              class="h-5 w-5 group-hover:stroke-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -426,11 +436,11 @@
           <button
             @click="next"
             :disabled="currentIndex >= cards.length - 1"
-            class="p-3 rounded-full bg-white shadow-md hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+            class="group p-3 rounded-full bg-white shadow-md hover:bg-blue-800 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              class="h-5 w-5 group-hover:stroke-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -446,6 +456,762 @@
         </div>
       </div>
     </section>
+
+    <!-- end of section card -->
+
+    <!-- sectioon gallery -->
+
+    <section class="py-8 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-8 md:mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl lg:text-4xl">
+            See the <span class="text-blue-600">gallery</span> we will join in
+            here
+          </h2>
+          <p class="mt-4 text-lg text-gray-600 max-w-2xl">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-screen-2xl mx-auto">
+        <!-- Gallery Container -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 h-auto min-h-[500px]"
+        >
+          <!-- Left Column (full height image) -->
+          <div
+            class="group relative h-[300px] md:h-full overflow-hidden rounded-xl shadow-lg"
+          >
+            <img
+              src="public/img-8.jpg"
+              alt="Gallery 1"
+              class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
+            >
+              <span
+                class="text-white font-medium text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+                >Project Title</span
+              >
+            </div>
+          </div>
+
+          <!-- Middle Column (two stacked images) -->
+          <div class="flex flex-col gap-4 lg:gap-6 h-[300px] md:h-full">
+            <div
+              class="group relative flex-1 overflow-hidden rounded-xl shadow-lg"
+            >
+              <img
+                src="public/img-2.jpg"
+                alt="Gallery 2"
+                class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"
+              >
+                <span
+                  class="text-white font-medium translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+                  >Project Title</span
+                >
+              </div>
+            </div>
+            <div
+              class="group relative flex-1 overflow-hidden rounded-xl shadow-lg"
+            >
+              <img
+                src="public/img-3.jpg"
+                alt="Gallery 3"
+                class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"
+              >
+                <span
+                  class="text-white font-medium translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+                  >Project Title</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column (full height image) -->
+          <div
+            class="group relative h-[300px] md:h-full overflow-hidden rounded-xl shadow-lg"
+          >
+            <img
+              src="public/img-4.jpg"
+              alt="Gallery 4"
+              class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
+            >
+              <span
+                class="text-white font-medium text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+                >Project Title</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-8 md:mt-12">
+          <button
+            class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-md hover:shadow-lg"
+          >
+            Load More
+            <svg
+              class="w-5 h-5 ml-2 -mr-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- end section gallery -->
+
+    <!-- section start pricing card -->
+    <section class="bg-gray-50 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold text-center text-gray-900 mb-2">
+          Choose Your Plan
+        </h1>
+        <p class="text-lg text-center text-gray-600 mb-12">
+          Select the perfect plan for your business needs
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Basic Card -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg"
+          >
+            <div class="p-6 sm:p-8">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h2 class="text-2xl font-bold text-gray-800">Basic</h2>
+                  <p class="text-gray-600 mt-1">
+                    For individuals & small teams
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-6">
+                <div class="flex items-baseline">
+                  <span class="text-4xl font-extrabold text-gray-900">$9</span>
+                  <span class="ml-1 text-lg font-medium text-gray-500"
+                    >/month</span
+                  >
+                </div>
+                <p class="mt-1 text-sm text-gray-500">
+                  Billed annually or $12 month-to-month
+                </p>
+              </div>
+
+              <ul class="mt-6 space-y-3">
+                <li class="flex items-center">
+                  <svg
+                    class="h-5 w-5 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-700">Up to 3 team members</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="h-5 w-5 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-700">10GB cloud storage</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="h-5 w-5 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-700">Basic analytics</span>
+                </li>
+                <li class="flex items-center opacity-50">
+                  <svg
+                    class="h-5 w-5 text-gray-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-500">24/7 customer support</span>
+                </li>
+                <li class="flex items-center opacity-50">
+                  <svg
+                    class="h-5 w-5 text-gray-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-500">API access</span>
+                </li>
+              </ul>
+
+              <div class="mt-8">
+                <button
+                  class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded-lg transition duration-200"
+                >
+                  Get Started
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pro Card (Highlighted) -->
+          <div
+            class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-blue-500 transform scale-105 z-10"
+          >
+            <div
+              class="bg-blue-600 text-white text-sm font-semibold px-4 py-1 text-center"
+            >
+              MOST POPULAR
+            </div>
+
+            <div class="p-6 sm:p-8">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h2 class="text-2xl font-bold text-gray-800">Pro</h2>
+                  <p class="text-gray-600 mt-1">For growing businesses</p>
+                </div>
+                <span
+                  class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800"
+                >
+                  Save 20%
+                </span>
+              </div>
+
+              <div class="mt-6">
+                <div class="flex items-baseline">
+                  <span class="text-4xl font-extrabold text-gray-900">$29</span>
+                  <span class="ml-1 text-lg font-medium text-gray-500"
+                    >/month</span
+                  >
+                </div>
+                <p class="mt-1 text-sm text-gray-500">
+                  Billed annually or $35 month-to-month
+                </p>
+              </div>
+
+              <ul class="mt-6 space-y-3">
+                <li class="flex items-center">
+                  <svg
+                    class="h-5 w-5 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-700">Up to 10 team members</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="h-5 w-5 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-700">40GB cloud storage</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="h-5 w-5 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-700">Advanced analytics</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="h-5 w-5 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-700">24/7 customer support</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="h-5 w-5 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-700">API access</span>
+                </li>
+              </ul>
+
+              <div class="mt-8">
+                <button
+                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200"
+                >
+                  Get Started
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enterprise Card -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg"
+          >
+            <div class="p-6 sm:p-8">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h2 class="text-2xl font-bold text-gray-800">Enterprise</h2>
+                  <p class="text-gray-600 mt-1">For large organizations</p>
+                </div>
+              </div>
+
+              <div class="mt-6">
+                <div class="flex items-baseline">
+                  <span class="text-4xl font-extrabold text-gray-900">$99</span>
+                  <span class="ml-1 text-lg font-medium text-gray-500"
+                    >/month</span
+                  >
+                </div>
+                <p class="mt-1 text-sm text-gray-500">
+                  Billed annually or $120 month-to-month
+                </p>
+              </div>
+
+              <ul class="mt-6 space-y-3">
+                <li class="flex items-center">
+                  <svg
+                    class="h-5 w-5 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-700">Unlimited team members</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="h-5 w-5 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-700">200GB cloud storage</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="h-5 w-5 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-700">Advanced analytics</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="h-5 w-5 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-700">24/7 priority support</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="h-5 w-5 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-700">Full API access</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="h-5 w-5 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="ml-3 text-gray-700"
+                    >Dedicated account manager</span
+                  >
+                </li>
+              </ul>
+
+              <div class="mt-8">
+                <button
+                  class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200"
+                >
+                  Contact Sales
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="mt-8 text-center text-sm text-gray-500">
+          All plans come with a 14-day free trial. No credit card required.
+        </p>
+      </div>
+    </section>
+
+    <!-- end section pricing card -->
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white pt-8 pb-6 lg:pt-6">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between gap-6">
+          <!-- Bagian 1: Tentang Kami -->
+          <div class="w-full md:w-1/4">
+            <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4">
+              Tentang Kami
+            </h3>
+            <p class="text-gray-300 text-sm md:text-base mb-3 md:mb-4">
+              Perusahaan kami berkomitmen untuk memberikan solusi terbaik bagi
+              pelanggan dengan teknologi terkini.
+            </p>
+            <div class="flex space-x-3 md:space-x-4">
+              <a
+                href="#"
+                class="text-gray-300 hover:text-white text-sm md:text-base"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-300 hover:text-white text-sm md:text-base"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-300 hover:text-white text-sm md:text-base"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-300 hover:text-white text-sm md:text-base"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Bagian 2: Tautan Cepat -->
+          <div class="w-full md:w-1/4">
+            <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4">
+              Tautan Cepat
+            </h3>
+            <ul class="space-y-1 md:space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-white text-sm md:text-base"
+                  >Beranda</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-white text-sm md:text-base"
+                  >Tentang</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-white text-sm md:text-base"
+                  >Layanan</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-white text-sm md:text-base"
+                  >Portofolio</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-white text-sm md:text-base"
+                  >Kontak</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bagian 3: Layanan -->
+          <div class="w-full md:w-1/4">
+            <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4">Layanan</h3>
+            <ul class="space-y-1 md:space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-white text-sm md:text-base"
+                  >Web Development</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-white text-sm md:text-base"
+                  >Mobile App</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-white text-sm md:text-base"
+                  >UI/UX Design</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-white text-sm md:text-base"
+                  >Digital Marketing</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-white text-sm md:text-base"
+                  >SEO</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bagian 4: Kontak -->
+          <div class="w-full md:w-1/4">
+            <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4">
+              Hubungi Kami
+            </h3>
+            <ul class="space-y-1 md:space-y-2">
+              <li class="flex items-start">
+                <svg
+                  class="w-4 h-4 md:w-5 md:h-5 mr-2 mt-0.5 text-gray-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  ></path>
+                </svg>
+                <span class="text-gray-300 text-sm md:text-base"
+                  >Jl. Contoh No. 123, Kota Anda</span
+                >
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-4 h-4 md:w-5 md:h-5 mr-2 text-gray-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  ></path>
+                </svg>
+                <span class="text-gray-300 text-sm md:text-base"
+                  >+62 123 4567 890</span
+                >
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-4 h-4 md:w-5 md:h-5 mr-2 text-gray-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                <span class="text-gray-300 text-sm md:text-base"
+                  >info@perusahaan.com</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Garis Pemisah -->
+        <div class="border-t border-gray-700 mt-6 md:mt-8 pt-4 md:pt-6">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-300 text-xs md:text-sm mb-3 md:mb-0">
+              &copy; 2025 Kaizokou Team. Semua Hak Dilindungi.
+            </p>
+            <div class="flex space-x-4 md:space-x-6">
+              <a
+                href="#"
+                class="text-gray-300 hover:text-white text-xs md:text-sm"
+                >Kebijakan Privasi</a
+              >
+              <a
+                href="#"
+                class="text-gray-300 hover:text-white text-xs md:text-sm"
+                >Syarat & Ketentuan</a
+              >
+              <a
+                href="#"
+                class="text-gray-300 hover:text-white text-xs md:text-sm"
+                >Peta Situs</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer ending -->
 
     <script type="module" src="/src/main.js"></script>
   </body>
